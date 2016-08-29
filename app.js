@@ -17,6 +17,8 @@
     //simulate DELETE and PUT method
     var methodOverride = require('method-override');
     
+    var http = require('http');
+    
     //Pre-define city for retreive weather details
     //var addresses = ["Hong Kong"];
     var addresses = [];
