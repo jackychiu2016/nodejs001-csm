@@ -1,5 +1,5 @@
 {
-  "name": "Assignment 2-CSM-Weather",
+  "name": "Assignment_2-CSM-Weather",
   "version": "0.0.1",
   "scripts": {
     "start": "node app.js"
@@ -16,6 +16,5 @@
   },
   "description": "A weather application",
   "main": "app.js",
-  "author": "Jacky Chiu",
-  "license": "MIT"
+  "author": "Jacky Chiu"
 }
