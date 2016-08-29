@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<!-- Assign augularjs module -->
+<html ng-app="Weather">
+<head>
+    
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>My City Weather App</title>
+
+    <!-- load bootstrap css-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; background-color: #eee; font-family: fantasy;}
+        .jumbotron              {background-color: #fff;}
+        .label-info             {background-color: #5bde79; font-family: fantasy;}
+        h1                      {font-family: fantasy;}
+        .btn-primary             {color: #fff; background-color: #de5bc0; border-color: #de5bc0;}
+        .btn-primary:hover             {color: #fff; background-color: #de795b; border-color: #de795b;}
+        #weather-list              { margin-bottom:30px; }
+    </style>
+
+    <!-- include jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    <!-- include angularjs -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    
+    <!-- include custom angularjs -->
+    <script src="index.js"></script>
+
+</head>
+
+<!-- set the controller -->
+<body ng-controller="main">
+    
+    <div class="container">
+        
+        <!-- Header and counter -->
+        <div class="jumbotron text-center">
+            
+            <h1>My City Weather: <span class="label label-info">{{ weathers.length }}</span></h1>
+            
+        </div>
+        
+        <!-- saved weather list -->
+        <div id="weather-list" class="row">
+            
+            <div class="col-md-8 col-md-offset-5">
+
+                <!-- Loop saved weather IN $scope.weathers -->
+                <div class="checkbox" ng-repeat="weather in weathers">
+                    
+                    <label>
+                        
+                        <input type="checkbox" ng-click="deleteWeatherDetails(weather._id)"> {{ weather.city + ' , ' + weather.weather + ' , ' + weather.temperature }}
+                        
+                    </label>
+                    
+                </div>
+
+            </div>
+            
+        </div>
+
+        <!-- Form to save weather -->
+        <div id="weather-form" class="row">
+            
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                
+                <form>
+                    
+                    <div class="form-group">
+
+                        
+                        <input type="text" id="city" class="form-control input-lg text-center" placeholder="City" ng-model="cityName">
+                        
+                        <input type="text" id="weather" class="form-control input-lg text-center" placeholder="Weather" >
+                        
+                        <input type="text" id="temperature" class="form-control input-lg text-center" placeholder="Temperature" >
+                        
+                    </div>
+
+                    <!-- To add the weather details into mongoDB -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="addWeatherDetails()">Add</button>
+                    
+                    <!-- To get the weather details -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="getWeatherDetails()">Get</button>
+                    
+                </form>
+                
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

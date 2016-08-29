@@ -1,0 +1,74 @@
+ <!DOCTYPE html>
+     <head>
+          <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+          <script src="details.js"></script>
+          <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+          <style>
+              .myBtn{
+                   background: white;
+                   border: 1px solid silver;
+               }
+               #whtrContent{
+                   border: 1px solid silver;
+                   background-color: burlywood;
+               }
+               #whtrImg{
+                   width: 150px;height: 150px;
+                   border: 1px solid burlywood
+               }
+               .cityName{
+                   font-size: 100px;
+               }
+               .temp{
+                   padding: 15px;
+                   background: blue;
+                   color: white;
+               }
+               .coord{
+                   padding: 15px;
+                   background: blue;
+                   color: white;
+               }
+               .wind{
+                   padding: 15px;
+                   background: blue;
+                   color: white;
+               }
+               .sun{
+                   padding: 15px;
+                   background: blue;
+                   color: white;
+               }
+          </style>
+     </head>
+     <body>
+         <div ng-app = "MyApp" ng-controller = "MyCont">
+             <div class="row">
+                 <div class="col-md-2"></div>
+                 <div class="col-md-4">
+                     <p align = "center">
+                         <input type = "text" ng-model = "cityName" id = "textData" placeholder = "Enter Your City Name">
+                         <input class = "myBtn" type = "button" value = "GetDetails" ng-click = "funGet()">
+                      </p>
+                 </div>
+                 <div class="col-md-2"></div>
+             </div>
+             <div class="row">
+                 <div class="col-md-2"></div>
+                 <div class="col-md-4" id = "whtrContent">
+                    <h1 align="center">{{ cityName }}</h1>
+                    <hr />
+                    <p align = "center"> <img src="http://openweathermap.org/img/w/{{ imgCode }}.png"> </p>
+                    <h1 align = "center" class = "cityName"> {{ tmp | number : 1 }}°C </h1>
+                    <p align = "center"> <span class = "temp"> Min Temp :  {{minTemp | number : 1 }}°C </span><span class = "temp"> Max Temp :  {{maxTemp | number : 1 }}°C </span> </p>
+                    <p align = "center"> <span class = "coord"> Longitude :  {{lon | number : 1 }}° </span><span class = "coord"> Latitude :  {{lat | number : 1 }}°C </span> </p>
+                    <p align = "center"> <span class = "wind"> Wind Speed :  {{speed | number : 1 }} km/h </span><span class = "wind"> Degree :  {{deg | number : 1 }}° </span> </p>
+                    <p align = "center"> <span class = "sun"> Sunrise :  {{sunrise | date:'MM-dd HH:mm:ss Z' }} </span><span class = "sun"> Sunset :  {{sunset | date:'MM-dd HH:mm:ss Z' }} </span> </p>
+                    <br>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+     </body>
+ </html>
